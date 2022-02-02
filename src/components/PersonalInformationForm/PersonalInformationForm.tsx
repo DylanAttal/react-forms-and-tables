@@ -5,6 +5,7 @@ import TextField from './TextField'
 const initialFormData = {
   firstName: '',
   lastName: '',
+  email: '',
 }
 
 const PersonalInformationForm = () => {
@@ -24,6 +25,11 @@ const PersonalInformationForm = () => {
       <TextField
         label='Last Name'
         name='lastName'
+        handleTextChange={handleTextChange}
+      />
+      <TextField
+        label='Email'
+        name='email'
         handleTextChange={handleTextChange}
       />
     </form>
