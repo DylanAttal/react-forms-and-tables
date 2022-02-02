@@ -1,0 +1,6 @@
+.textField {
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+  margin: 0.25rem;
+}
