@@ -13,6 +13,7 @@ const PersonalInformationTable = ({
       <table>
         <thead>
           <tr>
+            <TableHeading heading='Profile Picture' />
             {headings.map((heading: string, index: number) => {
               return <TableHeading key={index} heading={heading} />
             })}
