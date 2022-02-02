@@ -1,34 +1,15 @@
-import { ChangeEvent, useState } from 'react'
+import PropTypes, { InferProps } from 'prop-types'
 import Dropdown from './Dropdown'
 import styles from './PersonalInformationForm.module.css'
 import TextField from './TextField'
 
-const initialFormData = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  selectedOption: '',
-}
-
-const employmentOptions = [
-  'Select employment',
-  'Student',
-  'Employed',
-  'Unemployed',
-  'Retired',
-]
-
-const PersonalInformationForm = () => {
-  const [formData, setFormData] = useState(initialFormData)
-
-  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
-  const handleDropdownSelection = (e: any) => {
-    setFormData({ ...formData, selectedOption: e.target.value })
-  }
-
+// @ts-ignore
+const PersonalInformationForm = ({
+  handleTextChange,
+  employmentOptions,
+  selectedOption,
+  handleDropdownSelection,
+}: InferProps<typeof PersonalInformationForm.propTypes>) => {
   return (
     <form className={styles.form}>
       <TextField
@@ -50,11 +31,18 @@ const PersonalInformationForm = () => {
         label='Employment'
         name='employmentStatus'
         options={employmentOptions}
-        selectedOption={formData.selectedOption}
+        selectedOption={selectedOption}
         handleDropdownSelection={handleDropdownSelection}
       />
     </form>
   )
+}
+
+PersonalInformationForm.propTypes = {
+  handleTextChange: PropTypes.func,
+  employmentOptions: PropTypes.array,
+  selectedOption: PropTypes.string,
+  handleDropdownSelection: PropTypes.func,
 }
 
 export default PersonalInformationForm
