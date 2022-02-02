@@ -1,6 +1,6 @@
-.textField {
+.dropdown {
+  margin: 0.5rem;
   width: 35%;
   display: flex;
   justify-content: space-between;
-  margin: 0.25rem;
 }
