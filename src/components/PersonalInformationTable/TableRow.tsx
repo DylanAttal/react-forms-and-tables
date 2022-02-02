@@ -13,10 +13,10 @@ const TableRow = (props: InferProps<typeof TableRow.propTypes>) => {
           alt='profile of user'
         />
       </td>
-      {props.info.map((prop: string, index: number) => {
+      {props.info.map((x: string, index: number) => {
         return (
           <td className={styles.cell} key={index}>
-            {prop}
+            {x}
           </td>
         )
       })}

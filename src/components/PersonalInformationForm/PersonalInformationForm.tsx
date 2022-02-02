@@ -1,4 +1,5 @@
 import PropTypes, { InferProps } from 'prop-types'
+import Button from './Button'
 import Dropdown from './Dropdown'
 import styles from './PersonalInformationForm.module.css'
 import TextField from './TextField'
@@ -9,6 +10,7 @@ const PersonalInformationForm = ({
   employmentOptions,
   selectedOption,
   handleDropdownSelection,
+  submitInformation,
 }: InferProps<typeof PersonalInformationForm.propTypes>) => {
   return (
     <form className={styles.form}>
@@ -34,6 +36,7 @@ const PersonalInformationForm = ({
         selectedOption={selectedOption}
         handleDropdownSelection={handleDropdownSelection}
       />
+      <Button text='Submit information' onClick={submitInformation} />
     </form>
   )
 }
@@ -43,6 +46,7 @@ PersonalInformationForm.propTypes = {
   employmentOptions: PropTypes.array,
   selectedOption: PropTypes.string,
   handleDropdownSelection: PropTypes.func,
+  submitInformation: PropTypes.func,
 }
 
 export default PersonalInformationForm
