@@ -40,7 +40,10 @@ const App = () => {
         selectedOption={formData.selectedOption}
         handleDropdownSelection={handleDropdownSelection}
       />
-      <PersonalInformationTable headings={Object.keys(formData)} />
+      <PersonalInformationTable
+        headings={Object.keys(formData)}
+        info={Object.values(formData)}
+      />
       <Footer />
     </div>
   )
