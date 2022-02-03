@@ -4,6 +4,14 @@ import styles from './TableRow.module.css'
 
 // @ts-ignore
 const TableRow = (props: InferProps<typeof TableRow.propTypes>) => {
+  const prettyPrint = (x: string | string[]) => {
+    if (Array.isArray(x)) {
+      return x.filter((x) => x !== '').join(', ')
+    }
+
+    return x
+  }
+
   return (
     <tr className={styles.tableRow}>
       <td>
@@ -16,7 +24,7 @@ const TableRow = (props: InferProps<typeof TableRow.propTypes>) => {
       {props.info.map((x: string, index: number) => {
         return (
           <td className={styles.cell} key={index}>
-            {x}
+            {prettyPrint(x)}
           </td>
         )
       })}

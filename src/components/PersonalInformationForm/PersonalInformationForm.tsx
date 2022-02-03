@@ -1,5 +1,6 @@
 import PropTypes, { InferProps } from 'prop-types'
 import Button from './Button'
+import Checkbox from './Checkbox'
 import Dropdown from './Dropdown'
 import styles from './PersonalInformationForm.module.css'
 import RadioButton from './RadioButton'
@@ -13,6 +14,8 @@ const PersonalInformationForm = ({
   handleDropdownSelection,
   citizenshipStatusOptions,
   handleRadioButtonSelection,
+  interests,
+  handleCheckboxSelection,
   submitInformation,
 }: InferProps<typeof PersonalInformationForm.propTypes>) => {
   return (
@@ -39,17 +42,33 @@ const PersonalInformationForm = ({
         selectedOption={selectedOption}
         handleDropdownSelection={handleDropdownSelection}
       />
-      {citizenshipStatusOptions.map((option: string, index: number) => {
-        return (
-          <RadioButton
-            key={index}
-            id={option}
-            name='citizenshipStatus'
-            value={option}
-            handleRadioButtonSelection={handleRadioButtonSelection}
-          />
-        )
-      })}
+      <div style={{ margin: '1rem', width: '35%' }}>
+        {citizenshipStatusOptions.map((option: string, index: number) => {
+          return (
+            <RadioButton
+              key={index}
+              id={option}
+              name='citizenshipStatus'
+              value={option}
+              handleRadioButtonSelection={handleRadioButtonSelection}
+            />
+          )
+        })}
+      </div>
+
+      <div style={{ margin: '1rem', width: '35%' }}>
+        {interests.map((interest: string, index: number) => {
+          return (
+            <Checkbox
+              key={index}
+              id={interest}
+              name='interest'
+              value={interest}
+              handleCheckboxSelection={handleCheckboxSelection}
+            />
+          )
+        })}
+      </div>
       <Button text='Submit information' onClick={submitInformation} />
     </form>
   )
@@ -62,6 +81,8 @@ PersonalInformationForm.propTypes = {
   handleDropdownSelection: PropTypes.func,
   citizenshipStatusOptions: PropTypes.array,
   handleRadioButtonSelection: PropTypes.func,
+  interests: PropTypes.array,
+  handleCheckboxSelection: PropTypes.func,
   submitInformation: PropTypes.func,
 }
 

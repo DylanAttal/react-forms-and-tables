@@ -11,6 +11,7 @@ const initialFormData = {
   email: '',
   selectedOption: '',
   selectedCitizenshipStatus: '',
+  selectedInterests: [''],
 }
 
 const employmentOptions = [
@@ -22,6 +23,17 @@ const employmentOptions = [
 ]
 
 const citizenshipStatusOptions = ['US Citizen', 'Sponsored', 'International']
+
+const interests = [
+  'Golfing',
+  'Biking',
+  'Swimming',
+  'Cooking',
+  'Laughing',
+  'Eating',
+  'Running',
+  'Meowing',
+]
 
 const App = () => {
   const [formData, setFormData] = useState(initialFormData)
@@ -39,6 +51,17 @@ const App = () => {
     setFormData({ ...formData, selectedCitizenshipStatus: e.target.value })
   }
 
+  const handleCheckboxSelection = (e: ChangeEvent<HTMLInputElement>) => {
+    const selectedInterests = formData.selectedInterests
+    if (selectedInterests.includes(e.target.value)) {
+      const newInterests = selectedInterests.filter((x) => x !== e.target.value)
+      setFormData({ ...formData, selectedInterests: newInterests })
+    } else {
+      selectedInterests.push(e.target.value)
+      setFormData({ ...formData, selectedInterests })
+    }
+  }
+
   const submitInformation = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     setShowTable(true)
@@ -54,6 +77,8 @@ const App = () => {
         handleDropdownSelection={handleDropdownSelection}
         citizenshipStatusOptions={citizenshipStatusOptions}
         handleRadioButtonSelection={handleRadioButtonSelection}
+        interests={interests}
+        handleCheckboxSelection={handleCheckboxSelection}
         submitInformation={submitInformation}
       />
       {showTable && (

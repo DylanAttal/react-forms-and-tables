@@ -1,4 +1,3 @@
-.radioButton {
-  width: 35%;
-  display: flex;
+.radioButtonContainer {
+  margin: 0.25rem;
 }

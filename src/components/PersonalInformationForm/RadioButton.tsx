@@ -9,7 +9,7 @@ const RadioButton = ({
   handleRadioButtonSelection,
 }: InferProps<typeof RadioButton.propTypes>) => {
   return (
-    <div className={styles.radioButton}>
+    <div className={styles.radioButtonContainer}>
       <input
         id={id}
         type='radio'
