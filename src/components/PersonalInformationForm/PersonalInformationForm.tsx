@@ -2,6 +2,7 @@ import PropTypes, { InferProps } from 'prop-types'
 import Button from './Button'
 import Dropdown from './Dropdown'
 import styles from './PersonalInformationForm.module.css'
+import RadioButton from './RadioButton'
 import TextField from './TextField'
 
 // @ts-ignore
@@ -10,6 +11,8 @@ const PersonalInformationForm = ({
   employmentOptions,
   selectedOption,
   handleDropdownSelection,
+  citizenshipStatusOptions,
+  handleRadioButtonSelection,
   submitInformation,
 }: InferProps<typeof PersonalInformationForm.propTypes>) => {
   return (
@@ -36,6 +39,17 @@ const PersonalInformationForm = ({
         selectedOption={selectedOption}
         handleDropdownSelection={handleDropdownSelection}
       />
+      {citizenshipStatusOptions.map((option: string, index: number) => {
+        return (
+          <RadioButton
+            key={index}
+            id={option}
+            name='citizenshipStatus'
+            value={option}
+            handleRadioButtonSelection={handleRadioButtonSelection}
+          />
+        )
+      })}
       <Button text='Submit information' onClick={submitInformation} />
     </form>
   )
@@ -46,6 +60,8 @@ PersonalInformationForm.propTypes = {
   employmentOptions: PropTypes.array,
   selectedOption: PropTypes.string,
   handleDropdownSelection: PropTypes.func,
+  citizenshipStatusOptions: PropTypes.array,
+  handleRadioButtonSelection: PropTypes.func,
   submitInformation: PropTypes.func,
 }
 

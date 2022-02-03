@@ -17,6 +17,8 @@ const TableHeading = ({
         return 'Email'
       case 'selectedOption':
         return 'Employment'
+      case 'selectedCitizenshipStatus':
+        return 'Citizenship'
       default:
         return ''
     }

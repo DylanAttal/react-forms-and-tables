@@ -10,6 +10,7 @@ const initialFormData = {
   lastName: '',
   email: '',
   selectedOption: '',
+  selectedCitizenshipStatus: '',
 }
 
 const employmentOptions = [
@@ -20,6 +21,8 @@ const employmentOptions = [
   'Retired',
 ]
 
+const citizenshipStatusOptions = ['US Citizen', 'Sponsored', 'International']
+
 const App = () => {
   const [formData, setFormData] = useState(initialFormData)
   const [showTable, setShowTable] = useState(false)
@@ -28,8 +31,12 @@ const App = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleDropdownSelection = (e: any) => {
+  const handleDropdownSelection = (e: ChangeEvent<HTMLSelectElement>) => {
     setFormData({ ...formData, selectedOption: e.target.value })
+  }
+
+  const handleRadioButtonSelection = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, selectedCitizenshipStatus: e.target.value })
   }
 
   const submitInformation = (e: MouseEvent<HTMLButtonElement>) => {
@@ -45,6 +52,8 @@ const App = () => {
         employmentOptions={employmentOptions}
         selectedOption={formData.selectedOption}
         handleDropdownSelection={handleDropdownSelection}
+        citizenshipStatusOptions={citizenshipStatusOptions}
+        handleRadioButtonSelection={handleRadioButtonSelection}
         submitInformation={submitInformation}
       />
       {showTable && (
